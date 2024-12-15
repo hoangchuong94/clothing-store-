@@ -53,7 +53,8 @@ export const forgotPassword = async (values: z.infer<typeof ForgotPasswordSchema
             },
         });
         return { success: 'Password updated!' };
-    } catch (error) {
+    } catch (error: unknown) {
+        console.log(error);
         return { error: 'something wrong.' };
     } finally {
         prisma.$disconnect();
@@ -93,7 +94,8 @@ export const sendVerificationEmail = async (values: z.infer<typeof EmailSchema>)
                 success: 'Confirmation email sent successfully. Please check your email',
             };
         }
-    } catch (error) {
+    } catch (error: unknown) {
+        console.log(error);
         return { error: 'something wrong.' };
     } finally {
         prisma.$disconnect();
