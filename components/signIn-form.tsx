@@ -78,12 +78,12 @@ export default function SignInForm() {
             className="xl:rounded-none"
         >
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     <FormField
                         control={form.control}
                         name="email"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Email : </FormLabel>
                                 <FormControl>
                                     <Input placeholder="Please enter your email" {...field} />
@@ -97,7 +97,7 @@ export default function SignInForm() {
                         control={form.control}
                         name="password"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Password :</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Please enter your password" {...field} type="password" />
@@ -107,11 +107,10 @@ export default function SignInForm() {
                         )}
                     />
 
-                    <Link
-                        href="/forgot-password"
-                        className="block p-4 text-end text-xs text-blue-500 hover:text-blue-700"
-                    >
-                        You forgot password ?
+                    <Link href="/forgot-password">
+                        <span className="float-right my-4 text-xs text-blue-500 hover:text-blue-700">
+                            You forgot password ?
+                        </span>
                     </Link>
 
                     <Button className="w-full" aria-disabled={isPending} disabled={isPending} type="submit">
@@ -119,7 +118,7 @@ export default function SignInForm() {
                             <LoadingSpinner />
                         ) : (
                             <>
-                                <p>Sign In</p>
+                                <span>Sign In</span>
                                 <ArrowRight className="ml-auto h-5 w-5 text-gray-50" />
                             </>
                         )}

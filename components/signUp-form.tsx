@@ -56,12 +56,12 @@ export default function SignUpForm() {
             footerHref="/signIn"
         >
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Name : </FormLabel>
                                 <FormControl>
                                     <Input placeholder="Please enter your name" {...field} />
@@ -74,7 +74,7 @@ export default function SignUpForm() {
                         control={form.control}
                         name="email"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Email : </FormLabel>
                                 <FormControl>
                                     <Input placeholder="Please enter your name" {...field} />
@@ -87,7 +87,7 @@ export default function SignUpForm() {
                         control={form.control}
                         name="password"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Password :</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Please enter your password" {...field} type="password" />
@@ -101,7 +101,7 @@ export default function SignUpForm() {
                         control={form.control}
                         name="passwordConfirm"
                         render={({ field }) => (
-                            <FormItem className="py-2">
+                            <FormItem>
                                 <FormLabel>Password Confirm :</FormLabel>
                                 <FormControl>
                                     <Input
@@ -114,14 +114,14 @@ export default function SignUpForm() {
                             </FormItem>
                         )}
                     />
-                    <Button className="mt-6 w-full" aria-disabled={isPending} disabled={isPending} type="submit">
+                    <Button className="w-full" aria-disabled={isPending} disabled={isPending} type="submit">
                         {isPending ? (
                             <LoadingSpinner />
                         ) : (
-                            <div>
-                                <p>Sign Up</p>
+                            <>
+                                <span>Sign Up</span>
                                 <ArrowRight className="ml-auto h-5 w-5 text-gray-50" />
-                            </div>
+                            </>
                         )}
                     </Button>
                 </form>
