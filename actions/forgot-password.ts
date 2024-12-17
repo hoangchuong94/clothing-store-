@@ -1,7 +1,7 @@
 'use server';
 import * as z from 'zod';
 import prisma from '@/lib/prisma';
-import bcryptjs from 'bcryptjs';
+import {hashPassword} from '@/actions/hash-password'
 import { getVerificationByToken } from '@/actions/verification-token';
 import { ForgotPasswordSchema, EmailSchema } from '@/schema/auth';
 import { generateVerificationToken } from '@/lib/tokens';
@@ -20,7 +20,7 @@ export const forgotPassword = async (values: z.infer<typeof ForgotPasswordSchema
         }
 
         const { password } = validatedFields.data;
-        const hashedPassword = await bcryptjs.hash(password, 10);
+        const hashedPassword = await hashPassword(password);
 
         const existingToken = await getVerificationByToken(token);
 
