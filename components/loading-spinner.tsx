@@ -1,15 +1,16 @@
 import React from 'react';
 
-const LoadingSpinner = () => {
+export default function LoadingSpinner() {
     return (
-        <div className="loading">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <div>
+            <div className="loading-btn font-thin">
+                <p>Loading</p>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     );
-};
-
-export default LoadingSpinner;
+}

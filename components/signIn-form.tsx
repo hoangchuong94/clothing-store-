@@ -86,7 +86,7 @@ export default function SignInForm() {
                             <FormItem>
                                 <FormLabel>Email : </FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your email" {...field} />
+                                    <Input placeholder="Please enter your email" {...field} className="h-8" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -100,7 +100,12 @@ export default function SignInForm() {
                             <FormItem>
                                 <FormLabel>Password :</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your password" {...field} type="password" />
+                                    <Input
+                                        placeholder="Please enter your password"
+                                        {...field}
+                                        type="password"
+                                        className="h-8"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

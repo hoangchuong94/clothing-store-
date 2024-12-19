@@ -6,8 +6,8 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import GitHub from 'next-auth/providers/github';
 import Google from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
-
-import {comparePassword} from '@/actions/hash-password'
+import { UserRole } from '@prisma/client';
+import { comparePassword } from '@/actions/hash-password';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     pages: {
@@ -103,7 +103,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session: async ({ session, token }) => {
             if (token.sub) {
                 session.user.id = token.sub;
-                session.user.role = token.role;
+                session.user.role = token.role as UserRole;
                 return session;
             }
             return session;
@@ -125,11 +125,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
             return true;
         },
-        redirect: async ({ url, baseUrl }) => {
-            if (url.startsWith('/')) return `${baseUrl}${url}`;
-            else if (new URL(url).origin === baseUrl) return url;
-            return baseUrl;
-        },
+        // redirect: async ({ url, baseUrl }) => {
+        //     if (url.startsWith('/')) return `${baseUrl}${url}`;
+        //     else if (new URL(url).origin === baseUrl) return url;
+        //     return baseUrl;
+        // },
     },
     events: {
         linkAccount: async ({ user }) => {

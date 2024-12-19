@@ -7,8 +7,7 @@ import { LoginSchema, RegisterSchema } from '@/schema/auth';
 import { sendVerificationEmail } from '@/lib/mail';
 import { generateVerificationToken } from '@/lib/tokens';
 import { DEFAULT_ADMIN_SIGN_IN_REDIRECT } from '@/routes';
-import {hashPassword} from '@/actions/hash-password'
-
+import { hashPassword } from '@/actions/hash-password';
 
 export async function authenticate(values: z.infer<typeof LoginSchema>, callbackUrl?: string | null) {
     try {
@@ -26,14 +25,11 @@ export async function authenticate(values: z.infer<typeof LoginSchema>, callback
             },
         });
 
-        
-
         //not check case register providers not password
 
         if (!user || !user.email || !user.password) {
             return { error: 'Email does not exist!' };
         }
-
 
         if (user && !user.emailVerified) {
             const verificationToken = await generateVerificationToken(user.email);
@@ -121,6 +117,6 @@ export async function register(values: z.infer<typeof RegisterSchema>) {
             error: 'Database Error: Failed to register user.',
         };
     } finally {
-           await prisma.$disconnect();
+        await prisma.$disconnect();
     }
 }

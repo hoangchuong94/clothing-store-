@@ -64,7 +64,7 @@ export default function SignUpForm() {
                             <FormItem>
                                 <FormLabel>Name : </FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your name" {...field} />
+                                    <Input placeholder="Enter your name" {...field} className="h-8" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -77,7 +77,7 @@ export default function SignUpForm() {
                             <FormItem>
                                 <FormLabel>Email : </FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your name" {...field} />
+                                    <Input placeholder="Enter your email" {...field} className="h-8" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -90,7 +90,12 @@ export default function SignUpForm() {
                             <FormItem>
                                 <FormLabel>Password :</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Please enter your password" {...field} type="password" />
+                                    <Input
+                                        placeholder="Enter your password"
+                                        {...field}
+                                        type="password"
+                                        className="h-8"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -105,25 +110,28 @@ export default function SignUpForm() {
                                 <FormLabel>Password Confirm :</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder="Please enter your password confirm"
+                                        placeholder="Enter your password confirm"
                                         {...field}
                                         type="password"
+                                        className="h-8"
                                     />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button className="w-full" aria-disabled={isPending} disabled={isPending} type="submit">
-                        {isPending ? (
-                            <LoadingSpinner />
-                        ) : (
-                            <>
-                                <span>Sign Up</span>
-                                <ArrowRight className="ml-auto h-5 w-5 text-gray-50" />
-                            </>
-                        )}
-                    </Button>
+                    <div>
+                        <Button className="mt-4 w-full" aria-disabled={isPending} disabled={isPending} type="submit">
+                            {isPending ? (
+                                <LoadingSpinner />
+                            ) : (
+                                <>
+                                    <span>Sign Up</span>
+                                    <ArrowRight className="ml-auto h-5 w-5 text-gray-50" />
+                                </>
+                            )}
+                        </Button>
+                    </div>
                 </form>
             </Form>
 
